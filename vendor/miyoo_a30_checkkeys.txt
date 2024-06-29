@@ -1,0 +1,59 @@
+ONScriper_event.cpp, KEYDOWN, KEYUP
+
+all joystick:
+no output
+A:
+INFO: Key pressed :  scancode 44 = Space, keycode 0x00000020 = Space  modifiers: (none)
+INFO: Key released:  scancode 44 = Space, keycode 0x00000020 = Space  modifiers: (none)
+B:
+INFO: Key pressed :  scancode 224 = Left Ctrl, keycode 0x400000E0 = Left Ctrl  modifiers: LCTRL
+INFO: Key released:  scancode 224 = Left Ctrl, keycode 0x400000E0 = Left Ctrl  modifiers: (none)
+Y:
+INFO: Key pressed :  scancode 226 = Left Alt, keycode 0x400000E2 = Left Alt  modifiers: LALT
+INFO: Key released:  scancode 226 = Left Alt, keycode 0x400000E2 = Left Alt  modifiers: (none)
+X:
+INFO: Key pressed :  scancode 225 = Left Shift, keycode 0x400000E1 = Left Shift  modifiers: LSHIFT
+INFO: Key released:  scancode 225 = Left Shift, keycode 0x400000E1 = Left Shift  modifiers: (none)
+Left:
+INFO: Key pressed :  scancode 80 = Left, keycode 0x40000050 = Left  modifiers: (none)
+INFO: Key released:  scancode 80 = Left, keycode 0x40000050 = Left  modifiers: (none)
+Right:
+INFO: Key pressed :  scancode 79 = Right, keycode 0x4000004F = Right  modifiers: (none)
+INFO: Key released:  scancode 79 = Right, keycode 0x4000004F = Right  modifiers: (none)
+Up:
+INFO: Key pressed :  scancode 82 = Up, keycode 0x40000052 = Up  modifiers: (none)
+INFO: Key released:  scancode 82 = Up, keycode 0x40000052 = Up  modifiers: (none)
+Down:
+INFO: Key pressed :  scancode 81 = Down, keycode 0x40000051 = Down  modifiers: (none)
+INFO: Key released:  scancode 81 = Down, keycode 0x40000051 = Down  modifiers: (none)
+L1:
+INFO: Key pressed :  scancode 43 = Tab, keycode 0x00000009 = Tab  modifiers: (none)
+INFO: Key released:  scancode 43 = Tab, keycode 0x00000009 = Tab  modifiers: (none)
+L2:
+INFO: Key pressed :  scancode 8 = E, keycode 0x00000065 = E  modifiers: (none)
+INFO: Key released:  scancode 8 = E, keycode 0x00000065 = E  modifiers: (none)
+R1:
+INFO: Key pressed :  scancode 42 = Backspace, keycode 0x00000008 = Backspace  modifiers: (none)
+INFO: Key released:  scancode 42 = Backspace, keycode 0x00000008 = Backspace  modifiers: (none)
+R2:
+INFO: Key pressed :  scancode 23 = T, keycode 0x00000074 = T  modifiers: (none)
+INFO: Key released:  scancode 23 = T, keycode 0x00000074 = T  modifiers: (none)
+Vol-:
+INFO: Key pressed :  scancode 129 = VolumeDown, keycode 0x40000081 = VolumeDown  modifiers: (none)
+INFO: Key released:  scancode 129 = VolumeDown, keycode 0x40000081 = VolumeDown  modifiers: (none)
+Vol+:
+INFO: Key pressed :  scancode 128 = VolumeUp, keycode 0x40000080 = VolumeUp  modifiers: (none)
+INFO: Key released:  scancode 128 = VolumeUp, keycode 0x40000080 = VolumeUp  modifiers: (none)
+Menu:
+INFO: Key pressed :  scancode 41 = Escape, keycode 0x0000001B = Escape  modifiers: (none)
+INFO: Key released:  scancode 41 = Escape, keycode 0x0000001B = Escape  modifiers: (none)
+Select:
+INFO: Key pressed :  scancode 228 = Right Ctrl, keycode 0x400000E4 = Right Ctrl  modifiers: RCTRL
+INFO: Key released:  scancode 228 = Right Ctrl, keycode 0x400000E4 = Right Ctrl  modifiers: (none)
+Start:
+INFO: Key pressed :  scancode 40 = Return, keycode 0x0000000D = Return  modifiers: (none)
+INFO: Key released:  scancode 40 = Return, keycode 0x0000000D = Return  modifiers: (none)
+Power:
+INFO: Key pressed :  scancode 102 = Power, keycode 0x40000066 = Power  modifiers: (none)
+INFO: Key released:  scancode 102 = Power, keycode 0x40000066 = Power  modifiers: (none)
+
