@@ -246,6 +246,9 @@ bool ONScripter::doEffect( EffectLink *effect, bool clear_dirty_region )
         
       case 10: // Cross fade
         height = 256 * effect_counter / effect_duration;
+#if defined(MIYOO)
+//SDL_Log("<<<<<<<< Cross fade height %d\n", height);
+#endif
         alphaBlend( NULL, ALPHA_BLEND_CONST, height, &dirty_rect.bounding_box );
         break;
         
@@ -458,8 +461,14 @@ bool ONScripter::doEffect( EffectLink *effect, bool clear_dirty_region )
     }
 
     if ( effect_counter < effect_duration && effect_no != 1 ){
+#if 1//!defined(MIYOO) //if without this code, then no effect, imme show
         if ( effect_no != 0 ) flush( REFRESH_NONE_MODE, NULL, false );
-    
+#else
+        //SDL_BlitSurface( effect_dst_surface, &dirty_rect.bounding_box, accumulation_surface, &dirty_rect.bounding_box );
+        if ( effect_no != 0 ) 
+		flushDirect(screen_rect, refreshMode());
+//flush( REFRESH_NONE_MODE, NULL, true );
+#endif    
         return true;
     }
     else{

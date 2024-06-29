@@ -245,6 +245,20 @@ int ONScripter::resizeSurface( SDL_Surface *src, SDL_Surface *dst )
     *dst_buffer = mask_rb | mask_rb >> 16; \
 }
 #else
+
+#if defined(MIYOO)
+
+#define BLEND_PIXEL_MASK(){\
+    Uint32 temp = *src1_buffer & 0xff00ff;\
+    Uint32 mask_rb = (((((*src2_buffer & 0xff00ff) - temp ) * mask2 ) >> 8 ) + temp ) & 0xff00ff;\
+    temp = *src1_buffer & 0x00ff00;\
+    Uint32 mask_g  = (((((*src2_buffer & 0x00ff00) - temp ) * mask2 ) >> 8 ) + temp ) & 0x00ff00;\
+    *dst_buffer = 0xffff0000 | mask_rb | mask_g;\
+}
+
+//0xff000000 | mask_rb | mask_g;
+#else
+
 #define BLEND_PIXEL_MASK(){\
     Uint32 temp = *src1_buffer & 0xff00ff;\
     Uint32 mask_rb = (((((*src2_buffer & 0xff00ff) - temp ) * mask2 ) >> 8 ) + temp ) & 0xff00ff;\
@@ -252,6 +266,8 @@ int ONScripter::resizeSurface( SDL_Surface *src, SDL_Surface *dst )
     Uint32 mask_g  = (((((*src2_buffer & 0x00ff00) - temp ) * mask2 ) >> 8 ) + temp ) & 0x00ff00;\
     *dst_buffer = mask_rb | mask_g;\
 }
+#endif
+
 // Originally, the above looks like this.
 //    mask1 = mask2 ^ 0xff;
 //    Uint32 mask_rb = (((*src1_buffer & 0xff00ff) * mask1 +
@@ -369,6 +385,12 @@ static void alphaBlend32(Uint32 *src1_buffer, Uint32 *src2_buffer, Uint32 *dst_b
     }
     delete[] mask2;
 #else
+
+#if defined(MIYOO)
+//SDL_Log("alphaBlend32\n");
+#endif
+
+
     for (int j = 0; j < rect_w; j++) {
         Uint32 mask2 = 0;
         Uint32 mask = *(mask_buffer + j2) & 0xFF;
@@ -423,12 +445,20 @@ inline static void alphaBlendConst32(Uint32 *src1_buffer, Uint32 *src2_buffer, U
         --remain; ++src1_buffer; ++src2_buffer; ++dst_buffer;
     }
 #else
+
+#if defined(MIYOO) //effect 10 run here
+//SDL_Log("alphaBlendConst32\n");
+#endif
     for (int i = 0; i < remain; ++i, ++src1_buffer, ++src2_buffer, ++dst_buffer) {
         Uint32 temp = *src1_buffer & 0xff00ff;
         Uint32 mask_rb = (((((*src2_buffer & 0xff00ff) - temp) * mask2) >> 8) + temp) & 0xff00ff;
         temp = *src1_buffer & 0x00ff00;
         Uint32 mask_g = (((((*src2_buffer & 0x00ff00) - temp) * mask2) >> 8) + temp) & 0x00ff00;
+#if defined(MIYOO)
+        *dst_buffer = 0xff000000 | mask_rb | mask_g;
+#else
         *dst_buffer = mask_rb | mask_g;
+#endif
     }
 #endif
 }
@@ -473,10 +503,14 @@ void ONScripter::alphaBlend(SDL_Surface *mask_surface,
     }
 
     Uint32 overflow_mask;
+#if 0 //#if defined(MIYOO)
+        overflow_mask = 0xffffffff;
+#else
     if ( trans_mode == ALPHA_BLEND_FADE_MASK )
         overflow_mask = 0xffffffff;
     else
         overflow_mask = ~lowest_mask;
+#endif
 
     mask_value >>= lowest_loss;
 
@@ -523,11 +557,17 @@ void ONScripter::alphaBlend(SDL_Surface *mask_surface,
             (ONSBuf *)src2->pixels + src2->w * rect.y + rect.x,
             (ONSBuf *)dst->pixels + dst->w * rect.y + rect.x,
             mask2, screen_width, rect.w};
+
+#if defined(MIYOO)
+#endif
+
+#if 1
 #if defined(USE_PARALLEL) || defined(USE_OMP_PARALLEL)
         parallel::For(0, rect.h, 1, blender, rect.h * rect.w);
 #else
         for (int i = 0; i < rect.h; i++) blender(i);
 #endif //USE_PARALLEL
+#endif
     }
     
     if ( mask_surface ) SDL_UnlockSurface( mask_surface );

@@ -719,6 +719,7 @@ void ONScripter::resetSentenceFont()
 
 void ONScripter::flush( int refresh_mode, SDL_Rect *rect, bool clear_dirty_flag, bool direct_flag )
 {
+//SDL_Log("<<<<flush\n");
     if ( direct_flag ){
         flushDirect( *rect, refresh_mode );
     }
