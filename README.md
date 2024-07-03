@@ -22,3 +22,6 @@ ONScripter是一个开源的NScripter脚本解释工具，主要由Ogapee开发�
 ## [WIP] How to Build  
 * Modify Makefile, where are gcc and stage_files   
 * Run 'make clean && make MIYOO=1'  
+
+## TODO, bugs
+* Joystick not handled  
