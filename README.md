@@ -27,4 +27,5 @@ ONScripter是一个开源的NScripter脚本解释工具，主要由Ogapee开发�
 * Joystick not handled  
 * SDL_image vendor file
 * SDL_image -I include file put before  
-* How to get gcc toolchain  
+* How to get gcc toolchain
+* How to build under xubuntu   
